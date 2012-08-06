@@ -1,0 +1,30 @@
+.header, .footer{
+    background: none repeat scroll 0 0 activeborder;
+    border: 1px solid #EE6767;
+    font-size: xx-large;
+    left: 10%;
+    position: relative;
+    width: 80%;
+    float:left;
+}
+
+.navigator {
+    background: none repeat scroll 0 0 activeborder;
+    border: 1px solid #EE6767;
+    left: 10%;
+    position: relative;
+    width: 20%;
+    float:left;
+    height:400px;
+}
+
+.blogDisplayPanel {
+    background: none repeat scroll 0 0 activeborder;
+    border: 1px solid #EE6767;
+    left: 10%;
+    position: relative;
+    width: 60%;
+    float:left;
+    height:400px;
+}
+
