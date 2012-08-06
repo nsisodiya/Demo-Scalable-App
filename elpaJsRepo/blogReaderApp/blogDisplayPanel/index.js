@@ -28,7 +28,7 @@ elpaJsRepo.blogReaderApp.blogDisplayPanel = function(sandbox){
 			if(this.allBlogs == undefined){
 				alert("Data Not Loaded From Server");
 			}else{
-				this.$.html(this.allBlogs[id].text);
+				this.$.html('<p>' + this.allBlogs[id].text + '</p>');
 			}
 			
 		},

@@ -13,9 +13,10 @@
     border: 1px solid #EE6767;
     left: 10%;
     position: relative;
-    width: 20%;
+    width: 19%;
     float:left;
     height:400px;
+    padding:0.5%
 }
 
 .blogDisplayPanel {
@@ -23,8 +24,10 @@
     border: 1px solid #EE6767;
     left: 10%;
     position: relative;
-    width: 60%;
+    width: 56%;
     float:left;
-    height:400px;
+    height:380px;
+    padding:2%;
 }
 
+.spanLink{color:#0075CE;cursor:pointer;} .spanLink:hover{ text-decoration:underline;}.spanLinkDisabled{color:#ccc;text-decoration:none;cursor:auto;}

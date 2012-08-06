@@ -29,7 +29,7 @@ elpaJsRepo.blogReaderApp.navigator = function(sandbox){
 			var htmlstr = [];
 			htmlstr.push('<ul>');
 			$.each(data, function(i,link){
-				htmlstr.push('<li><span class="'+ self.id +'_links" data-blogid="'+  link.id +'">'+ link.title +'<span></li>');	
+				htmlstr.push('<li><span class="spanLink '+ self.id +'_links" data-blogid="'+  link.id +'">'+ link.title +'<span></li>');	
 			});
 			htmlstr.push('</ul>');
 			this.$.append(htmlstr.join(''));					
