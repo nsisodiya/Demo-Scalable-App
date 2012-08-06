@@ -9,8 +9,9 @@ elpaJsRepo.blogReaderApp.blogDisplayPanel = function(sandbox){
 		
 		},
 		end: function(){
-	
+			this.sandbox.events.unsubscribe({event: 'onBlogLinkSelected'});
 		},
+		
 		initHTML: function(){
 			this.$.append("<p>THIS IS BLOG PANEL</p>");
 			this.subscribeEvents();
