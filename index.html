@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Demo of Scalable JavaScript Application: BlogReader</title>
+    <!-- Optimization: move all scripts to end of body -->
     <script type="text/javascript" src="./external-libs/jquery-1.7.1.js"></script>
 	<script type="text/javascript" src="./external-libs/lb-min-2012-08-04-0752.js"></script>
 
@@ -15,7 +16,9 @@
 	<script type="text/javascript" src="./elpaJsRepo/blogReaderApp/footer/index.js"></script>
 	<script type="text/javascript" src="./elpaJsRepo/blogReaderApp/header/index.js"></script>
 	
+        <!-- Optimization: move inline script to an external script -->
 	<script type="text/javascript">
+                // Optimization: remove call to $(), no longer needed when script is loaded at end of body
 		$(function(){
 			//Loaded All files, Now Load our modules
 			
