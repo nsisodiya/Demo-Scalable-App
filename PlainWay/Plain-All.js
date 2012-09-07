@@ -1,7 +1,3 @@
-function loadModule(id, mod){
-	return new mod(id);
-}
-
 //##############################################################################
 //		Application Level Module
 //
@@ -11,9 +7,10 @@ function loadModule(id, mod){
 var myApp = myApp || {};
 
 
-myApp.application = function(id){
-	this.$ =  $("#" + id);		//Container of mudule
-	this.id = id;			//Id of Container - This may be require to create Unique Ids
+myApp.application = function(sb){
+	this.sb = sb;
+	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
+	this.$ =  $("#" + this.id);		//Container of mudule
 };
 
 myApp.application.template = '<div class="header" id="<%= id %>_header"></div>\
@@ -34,13 +31,13 @@ myApp.application.prototype = {
 		this.$.append(_.template(myApp.application.template, { id: this.id }));
 	},
 	loadModules: function(){
-		this.blogDisplayModule = loadModule(this.id + "_blogDisplayContainer", myApp.blogDisplayPanel);
+		this.blogDisplayModule = this.sb.createChildModule(this.id + "_blogDisplayContainer", myApp.blogDisplayPanel);
 	
-		this.headerModule = loadModule(this.id + "_header", myApp.header);
+		this.headerModule = this.sb.createChildModule(this.id + "_header", myApp.header);
 	
-		this.navigatorModule = loadModule(this.id + "_navigator", myApp.navigator);
+		this.navigatorModule = this.sb.createChildModule(this.id + "_navigator", myApp.navigator);
 	
-		this.footerModule = loadModule(this.id + "_footer", myApp.footer);
+		this.footerModule = this.sb.createChildModule(this.id + "_footer", myApp.footer);
 
 	
 		this.blogDisplayModule.start();
@@ -50,9 +47,10 @@ myApp.application.prototype = {
 	}
 };
 
-myApp.header = function(id){
-	this.$ =  $("#" + id);		//Container of mudule
-	this.id = id;			//Id of Container - This may be require to create Unique Ids
+myApp.header = function(sb){
+	this.sb = sb;
+	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
+	this.$ =  $("#" + this.id);		//Container of mudule
 };
 myApp.header.prototype = {
 	start: function(){
@@ -66,9 +64,10 @@ myApp.header.prototype = {
 	}
 };
 
-myApp.footer = function(id){
-	this.$ =  $("#" + id);		//Container of mudule
-	this.id = id;			//Id of Container - This may be require to create Unique Ids
+myApp.footer = function(sb){
+	this.sb = sb;
+	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
+	this.$ =  $("#" + this.id);		//Container of mudule
 };
 myApp.footer.prototype = {
 	start: function(){
@@ -83,10 +82,12 @@ myApp.footer.prototype = {
 };
 
 
-myApp.navigator = function(id){
-	this.$ =  $("#" + id);		//Container of mudule
-	this.id = id;			//Id of Container - This may be require to create Unique Ids
+myApp.navigator = function(sb){
+	this.sb = sb;
+	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
+	this.$ =  $("#" + this.id);		//Container of mudule
 };
+
 myApp.navigator.prototype = {
 	start: function(){
 		this.initHTML();
@@ -126,24 +127,25 @@ myApp.navigator.prototype = {
 		var self = this;
 		this.$.find("." + self.id + "_links").click(function(){
 			//Transmit this Id to Other Module
-			amplify.publish("onBlogLinkSelected", $(this).data("blogid"));
+			self.sb.publish("onBlogLinkSelected", $(this).data("blogid"));
 		});
 	}
 
 };
 
 
-myApp.blogDisplayPanel = function(id){
-	this.$ =  $("#" + id);		//Container of mudule
-	this.id = id;			//Id of Container - This may be require to create Unique Ids
+myApp.blogDisplayPanel = function(sb){
+	this.sb = sb;
+	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
+	this.$ =  $("#" + this.id);		//Container of mudule
 };
 myApp.blogDisplayPanel.prototype = {
+
 	start: function(){
 		this.initHTML();
 
 	},
 	end: function(){
-		this.sandbox.events.unsubscribe({event: 'onBlogLinkSelected'});
 	},
 
 	initHTML: function(){
@@ -153,9 +155,9 @@ myApp.blogDisplayPanel.prototype = {
 	},
 	subscribeEvents: function(){
 		var self = this;
-		amplify.subscribe(
-			'onBlogLinkSelected',
+		this.sb.subscribe( 'onBlogLinkSelected',
 			function(value){
+				console.log('Event Received');
 				self.loadBlog(value);
 			});
 	},
