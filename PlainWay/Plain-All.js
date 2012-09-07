@@ -16,6 +16,12 @@ myApp.application = function(id){
 	this.id = id;			//Id of Container - This may be require to create Unique Ids
 };
 
+myApp.application.template = '<div class="header" id="<%= id %>_header"></div>\
+		<div class="navigator" id="<%= id %>_navigator"></div>\
+		<div class="blogDisplayPanel" id="<%= id %>_blogDisplayContainer"></div>\
+		<div class="footer" id="<%= id %>_footer"></div>';
+
+
 myApp.application.prototype = {
 	start: function(){
 		this.initHTML();
@@ -25,12 +31,7 @@ myApp.application.prototype = {
 	end: function(){},
 
 	initHTML: function(){
-		this.$.append('\
-			<div class="header" id="'+ this.id +'_header"></div>\
-			<div class="navigator" id="'+ this.id +'_navigator"></div>\
-			<div class="blogDisplayPanel" id="'+ this.id +'_blogDisplayContainer"></div>\
-			<div class="footer" id="'+ this.id +'_footer"></div>\
-			');
+		this.$.append(_.template(myApp.application.template, { id: this.id }));
 	},
 	loadModules: function(){
 		this.blogDisplayModule = loadModule(this.id + "_blogDisplayContainer", myApp.blogDisplayPanel);
@@ -99,10 +100,13 @@ myApp.navigator.prototype = {
 	},
 	callServer: function(){
 		var self = this;
-		$.get("./server/links", function(data){
+		$.ajax({
+			url:"../server/links",
+			dataType: "json"
+		})
+		.done(function(data){
 			self.parseResponse(data);
-		
-		},"json");
+		});
 
 	},
 	parseResponse: function(data){
@@ -167,9 +171,14 @@ myApp.blogDisplayPanel.prototype = {
 
 	callServer: function(){
 		var self = this;
-		$.get("./server/blogs", function(data){
+		
+		$.ajax({
+			url:"../server/blogs",
+			dataType: "json"
+		})
+		.done(function(data){
 			self.allBlogs = data;
-		},"json");
+		});
 
 	},
 };
