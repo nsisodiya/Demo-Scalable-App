@@ -7,28 +7,24 @@
 var myApp = myApp || {};
 
 
-myApp.application = function(sb){
-	this.sb = sb;
-	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
-	this.$ =  $("#" + this.id);		//Container of mudule
-};
-
-myApp.application.template = '<div class="header" id="<%= id %>_header"></div>\
+myApp.application =  {
+	template: '<div class="header" id="<%= id %>_header"></div>\
 		<div class="navigator" id="<%= id %>_navigator"></div>\
 		<div class="blogDisplayPanel" id="<%= id %>_blogDisplayContainer"></div>\
-		<div class="footer" id="<%= id %>_footer"></div>';
-
-
-myApp.application.prototype = {
+		<div class="footer" id="<%= id %>_footer"></div>',
 	start: function(){
 		this.initHTML();
 		this.loadModules();
-
 	},
-	end: function(){},
+	end: function(){
+		delete this.blogDisplayModule;
+		delete this.headerModule;
+		delete this.navigatorModule;
+		delete this.footerModule;
+	},
 
 	initHTML: function(){
-		this.$.append(_.template(myApp.application.template, { id: this.id }));
+		$(this.$).append(_.template(this.template, { id: this.id }));
 	},
 	loadModules: function(){
 		this.blogDisplayModule = this.sb.createChildModule(this.id + "_blogDisplayContainer", myApp.blogDisplayPanel);
@@ -47,12 +43,7 @@ myApp.application.prototype = {
 	}
 };
 
-myApp.header = function(sb){
-	this.sb = sb;
-	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
-	this.$ =  $("#" + this.id);		//Container of mudule
-};
-myApp.header.prototype = {
+myApp.header = {
 	start: function(){
 		this.initHTML();
 
@@ -60,16 +51,11 @@ myApp.header.prototype = {
 	end: function(){},
 
 	initHTML: function(){
-		this.$.append("<p>THIS IS HEADER PANEL</p>");
+		$(this.$).append("<p>THIS IS HEADER PANEL</p>");
 	}
 };
 
-myApp.footer = function(sb){
-	this.sb = sb;
-	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
-	this.$ =  $("#" + this.id);		//Container of mudule
-};
-myApp.footer.prototype = {
+myApp.footer = {
 	start: function(){
 		this.initHTML();
 
@@ -77,18 +63,12 @@ myApp.footer.prototype = {
 	end: function(){},
 
 	initHTML: function(){
-		this.$.append("<p>THIS IS FOOTER PANEL</p>");
+		$(this.$).append("<p>THIS IS FOOTER PANEL</p>");
 	}
 };
 
 
-myApp.navigator = function(sb){
-	this.sb = sb;
-	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
-	this.$ =  $("#" + this.id);		//Container of mudule
-};
-
-myApp.navigator.prototype = {
+myApp.navigator = {
 	start: function(){
 		this.initHTML();
 
@@ -119,13 +99,13 @@ myApp.navigator.prototype = {
 			htmlstr.push('<li><span class="spanLink '+ self.id +'_links" data-blogid="'+  link.id +'">'+ link.title +'<span></li>');	
 		});
 		htmlstr.push('</ul>');
-		this.$.append(htmlstr.join(''));					
+		$(this.$).append(htmlstr.join(''));					
 		this.attachClickHandlers();
 	},
 
 	attachClickHandlers: function(){
 		var self = this;
-		this.$.find("." + self.id + "_links").click(function(){
+		$(this.$).find("." + self.id + "_links").click(function(){
 			//Transmit this Id to Other Module
 			self.sb.publish("onBlogLinkSelected", $(this).data("blogid"));
 		});
@@ -134,12 +114,7 @@ myApp.navigator.prototype = {
 };
 
 
-myApp.blogDisplayPanel = function(sb){
-	this.sb = sb;
-	this.id = sb.getId();			//Id of Container - This may be require to create Unique Ids
-	this.$ =  $("#" + this.id);		//Container of mudule
-};
-myApp.blogDisplayPanel.prototype = {
+myApp.blogDisplayPanel = {
 
 	start: function(){
 		this.initHTML();
@@ -149,7 +124,7 @@ myApp.blogDisplayPanel.prototype = {
 	},
 
 	initHTML: function(){
-		this.$.append("<p>THIS IS BLOG PANEL</p>");
+		$(this.$).append("<p>THIS IS BLOG PANEL</p>");
 		this.subscribeEvents();
 		this.callServer();
 	},
@@ -166,7 +141,7 @@ myApp.blogDisplayPanel.prototype = {
 		if(this.allBlogs == undefined){
 			alert("Data Not Loaded From Server");
 		}else{
-			this.$.html('<p>' + this.allBlogs[id].text + '</p>');
+			$(this.$).html('<p>' + this.allBlogs[id].text + '</p>');
 		}
 	
 	},

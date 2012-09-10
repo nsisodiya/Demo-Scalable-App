@@ -44,9 +44,18 @@ var choona = (function(){
 
 
 
-	var AppCore = function(id, creator, config){
-		this.sandbox = new Sandbox(id)
-		this.module = new creator( this.sandbox, config);
+	var AppCore = function(id, protoObj_Module, config){
+	
+		var defaultCreator = function(sandbox, config){
+			this.sb = sandbox;
+			this.id = sandbox.getId();			//Id of Container - This may be require to create Unique Ids
+			this.$ =  document.getElementById(this.id);		//Container of mudule
+			this.config = config;
+		};
+		defaultCreator.prototype = protoObj_Module;
+		
+		this.sandbox = new Sandbox(id);
+		this.module = new defaultCreator( this.sandbox, config);
 	
 	};
 
@@ -63,6 +72,7 @@ var choona = (function(){
 			this.sandbox.unsubscribeAll();
 			console.log('ended -> ', this.sandbox.getId());
 		}
+		
 	};
 	
 	return {
