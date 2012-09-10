@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Demo of Scalable JavaScript Application: BlogReader</title>
-    <link rel="STYLESHEET" href="./elpaJsRepo/blogReaderApp/index.css" type="text/css">
+    <title>Demo of Scalable Arch using Choona.js: BlogReader</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Demo of Scalable Arch using Choona.js">
+    <link rel="STYLESHEET" href="../elpaJsRepo/blogReaderApp/index.css" type="text/css">
 	
 </head>
 <body>
 	<div id="applicationContainer"></div>
-	<script type="text/javascript" src="./external-libs/jquery-1.7.1.js"></script>
-	<script type="text/javascript" src="./external-libs/amplify.min.js"></script>
+	<script type="text/javascript" src="./../external-libs/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="./../external-libs/amplify.min.js"></script>
+	<script type="text/javascript" src="./../external-libs/underscore-min.js"></script>
+	<script type="text/javascript" src="./../external-libs/choona.js"></script>	
 
-	<script type="text/javascript" src="./PlainWay/myApp.util.js"></script>	
-
-	<script type="text/javascript" src="./PlainWay/myApp.js"></script>
-	<script type="text/javascript" src="./PlainWay/myApp.application.js"></script>
-	<script type="text/javascript" src="./PlainWay/myApp.blogDisplayPanel.js"></script>
-	<script type="text/javascript" src="./PlainWay/myApp.footer.js"></script>
-	<script type="text/javascript" src="./PlainWay/myApp.header.js"></script>
-	<script type="text/javascript" src="./PlainWay/myApp.navigator.js"></script>
-	
-
-
+	<script type="text/javascript" src="./myApp.js"></script>
+	<script type="text/javascript" src="./myApp.application.js"></script>
+	<script type="text/javascript" src="./myApp.header.js"></script>
+	<script type="text/javascript" src="./myApp.footer.js"></script>
+	<script type="text/javascript" src="./myApp.navigator.js"></script>
+	<script type="text/javascript" src="./myApp.blogDisplayPanel.js"></script>
 	<script type="text/javascript">
-  		var application = loadModule("applicationContainer", myApp.application);
+  		var application = new choona.createModule("applicationContainer", myApp.application);
 			application.start();
 	</script> 
 </body>

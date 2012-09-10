@@ -1,8 +1,4 @@
-myApp.footer = function(id){
-	this.$ =  $("#" + id);		//Container of mudule
-	this.id = id;			//Id of Container - This may be require to create Unique Ids
-};
-myApp.footer.prototype = {
+myApp.footer = {
 	start: function(){
 		this.initHTML();
 
@@ -10,7 +6,6 @@ myApp.footer.prototype = {
 	end: function(){},
 
 	initHTML: function(){
-		this.$.append("<p>THIS IS FOOTER PANEL</p>");
+		$(this.$).append("<p>THIS IS FOOTER PANEL</p>");
 	}
 };
-
