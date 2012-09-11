@@ -23,7 +23,7 @@ var choona = (function(){
 		unsubscribeAll: function(){
 			for(var topic in this.topicList){
 				amplify.unsubscribe(topic, this.topicList[topic]);
-				console.log('cleared topic -> ' + topic);
+				//console.log('cleared topic -> ' + topic);
 			}
 		},
 		eraseUI: function(){
@@ -70,7 +70,7 @@ var choona = (function(){
 			this.module.end();
 			this.sandbox.eraseUI();
 			this.sandbox.unsubscribeAll();
-			console.log('ended -> ', this.sandbox.getId());
+			//console.log('ended -> ', this.sandbox.getId());
 		}
 		
 	};

@@ -16,7 +16,7 @@ myApp.blogDisplayPanel = {
 		var self = this;
 		this.sb.subscribe( 'onBlogLinkSelected',
 			function(value){
-				console.log('Event Received');
+				//console.log('Event Received');
 				self.loadBlog(value);
 			});
 	},
