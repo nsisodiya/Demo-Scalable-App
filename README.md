@@ -215,19 +215,12 @@ myApp.resultbox = {
 			</div>\
 		');
 		
-		self.sb.publish('toResultBox', {
-				val1 : $(self.$).find("value1").val(),
-				val2 : $(self.$).find("value2").val()
-		});
-
-		$(this.$).find("add").click(function(){
-			//Send the signal to Result box
-			self.sb.publish('toResultBox', {
-				val1 : $(self.$).find("value1").val(),
-				val2 : $(self.$).find("value2").val()
-			});
-		});
-		
+		this.sb.subscribe('toResultBox', 
+			function(config){
+				var result = parseInt(config.val1) + parseInt(config.val2);
+				$(self.$).find("#resultbox").html(result);
+			}
+		);
 	},
 	end: function(){
 	
