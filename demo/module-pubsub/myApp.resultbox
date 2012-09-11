@@ -1,0 +1,27 @@
+myApp.resultbox = {
+
+	start: function(){
+		var self = this;
+		$(this.$).append('\
+			<div id="resultbox" class="resultbox">\
+			</div>\
+		');
+		
+		self.sb.publish('toResultBox', {
+				val1 : $(self.$).find("value1").val(),
+				val2 : $(self.$).find("value2").val()
+		});
+
+		$(this.$).find("add").click(function(){
+			//Send the signal to Result box
+			self.sb.publish('toResultBox', {
+				val1 : $(self.$).find("value1").val(),
+				val2 : $(self.$).find("value2").val()
+			});
+		});
+		
+	},
+	end: function(){
+	
+	}
+}

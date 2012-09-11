@@ -142,5 +142,94 @@ module1.start();
 * this.sb.subscribe  ==> Recieve Signals
 * this.sb.createChildModule  ==> Load modules inside another module
 
-You need not to unsubscribe the Signals. these will be unscribed automatically when a module end.
+You need not to unsubscribe the Signals. these will be unsubscribed automatically when a module ends.
 
+## Example of Module to Module Communication
+
+### HTML
+
+```html
+	<script type="text/javascript" src="./myApp.js"></script>
+	<script type="text/javascript">
+  		var application = new choona.createModule("applicationContainer", myApp.application);
+			application.start();
+	</script> 
+```
+* JS 
+```javascript
+
+var myApp = {};
+
+myApp.application = {
+	start:  function(){
+		$(this.$).append('\
+			<div>\
+				<div id="inputbox"/>\
+				<div id="resultbox"/>\
+			</div>\
+		');
+		
+		this.inputbox = this.sb.createChildModule('inputbox',myApp.inputbox);
+		this.resultbox = this.sb.createChildModule('resultbox',myApp.resultbox);
+		
+		this.inputbox.start();
+		this.resultbox.start();
+		
+	},
+	end:  function(){
+	
+	}
+}
+myApp.inputbox = {
+
+	start: function(){
+		var self = this;
+		$(this.$).append('\
+			<div class="inputbox">\
+				<input id="value1" type="text" />\
+				<input id="value2" type="text" />\
+				<input id="add" type="button" value="Add">\
+			</div>\
+		');
+		$(this.$).find("#add").click(function(){
+			//Send the signal to Result box
+			self.sb.publish('toResultBox', {
+				val1 : $(self.$).find("#value1").val(),
+				val2 : $(self.$).find("#value2").val()
+			});
+		});
+		
+	},
+	end: function(){
+	
+	}
+}
+myApp.resultbox = {
+
+	start: function(){
+		var self = this;
+		$(this.$).append('\
+			<div id="resultbox" class="resultbox">\
+			</div>\
+		');
+		
+		self.sb.publish('toResultBox', {
+				val1 : $(self.$).find("value1").val(),
+				val2 : $(self.$).find("value2").val()
+		});
+
+		$(this.$).find("add").click(function(){
+			//Send the signal to Result box
+			self.sb.publish('toResultBox', {
+				val1 : $(self.$).find("value1").val(),
+				val2 : $(self.$).find("value2").val()
+			});
+		});
+		
+	},
+	end: function(){
+	
+	}
+}
+
+```
