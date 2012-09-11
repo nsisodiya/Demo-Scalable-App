@@ -56,6 +56,91 @@ LICENSE
 ===========
 * BSD - OpenSource.
 
-Tutorial
+Coding Tutorial
 =============
+## Module Creation
+* Module = Empty Div (html) + JS Module Object(js) + Configuration (optional)
+* For creating a Module, You need one Empty Div/HTML element where you wil load module. You need to specify id of module
+
+
+### HTML
+```html
+	<div id='applicationContainer'></div>
+```
+### JS
+
+```javascript
+	(new choona.createModule("applicationContainer", myApp.application)).start();
+
+Or
+	var module1 = new choona.createModule("applicationContainer", myApp.application);
+	module1.start();
+	module1.end();
+```
+* myAll.application is a JavaScript Module Object. I will explain it latter
+* API provided by choona.createModule
+** start() - It  start a module
+** end() - It stop a module
+* So If you want to stop a module then you can do it.  Ex -  module1.stop()
+
+### Hello World Module
+
+```javascript
+(new choona.createModule("applicationContainer", {
+	start : function(){
+		$(this.$).append("<p>THIS IS HEADER PANEL</p>");
+	},
+	end: function(){
+	
+	}
+})).start();
+```	
+** inside Module - this.$ is basically a DOM object === document.getElementById("applicationContainer");
+** $(this.$) is jQuery DOM object. $(this.$) === $("#applicationContainer");
+
+** The above module can be written as 
+
+```javascript
+var myApp = {};
+
+var myApp.helloWorld = {
+	start : function(){
+		$(this.$).append("<p>THIS IS HEADER PANEL</p>");
+		
+		/*
+		*	this.id = Id of module. == applicationContainer
+		*	this.$ = Dom Element == document.getElementById(this.id);
+		*	$(this.$) = jQ  Element == $("#applicationContainer");
+		*	this.config ===== Configuration 
+		*	this.sb ==== instance of sandbox associated with module. It provide useful API
+		*/
+	},
+	end: function(){
+	
+	}
+};
+
+var config = {};
+var module1 = new choona.createModule("applicationContainer", myApp.helloWorld, config);
+module1.start();
+```
+
+### Flow of execution
+* you create a module using choona.createModule by passing an ID and Module Object. Module Object has start, end function. start function inside module will be executed automatically.
+
+### Variable available inside a module
+		*	this.id = Id of module. == applicationContainer
+		*	this.$ = Dom Element == document.getElementById(this.id);
+		*	$(this.$) = jQ  Element == $("#applicationContainer");
+		*	this.config ===== Configuration 
+		*	this.sb ==== instance of sandbox associated with module. It provide useful API
+
+## Sanbox API
+* Module is provided by instance of sanbox. sandbox element provide API.
+
+** this.sb.publish  => Send Signals
+** this.sb.subscribe  ==> Recieve Signals
+** this.sb.createChildModule  ==> Load modules inside another module
+
+You need not to unsubscribe the Signals. these will be unscribed automatically when a module end.
 

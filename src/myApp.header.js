@@ -1,11 +1,8 @@
 myApp.header = {
 	start: function(){
-		this.initHTML();
+		$(this.$).append("<p>THIS IS HEADER PANEL</p>");
 
 	},
-	end: function(){},
-
-	initHTML: function(){
-		$(this.$).append("<p>THIS IS HEADER PANEL</p>");
+	end: function(){
 	}
 };
