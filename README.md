@@ -2,7 +2,7 @@ Demo-Scalable-App
 =================
 
 This is small demo of Scalable JavaScript Application using Choona.js.
-Choona.js is a very small library for creating Scalable and Modular Javascript Application. 
+Choona.js (https://github.com/nsisodiya/choona.js) is a very small library for creating Scalable and Modular Javascript Application. 
 
 Learning
 =========
@@ -49,7 +49,7 @@ Links
 * https://github.com/eric-brechemier/lb_js_scalableApp Implementation 3
 
 I have used choona.js library for this Demo. I have created choona.js which fit best for my needs
-* visit https://github.com/nsisodiya/choonajs
+* visit https://github.com/nsisodiya/choona.js
 
 
 LICENSE
