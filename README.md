@@ -138,9 +138,9 @@ module1.start();
 ## Sanbox API
 * Module is provided by instance of sanbox. sandbox element provide API.
 
-** this.sb.publish  => Send Signals
-** this.sb.subscribe  ==> Recieve Signals
-** this.sb.createChildModule  ==> Load modules inside another module
+* this.sb.publish  => Send Signals
+* this.sb.subscribe  ==> Recieve Signals
+* this.sb.createChildModule  ==> Load modules inside another module
 
 You need not to unsubscribe the Signals. these will be unscribed automatically when a module end.
 
