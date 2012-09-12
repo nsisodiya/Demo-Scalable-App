@@ -70,9 +70,6 @@ Coding Tutorial
 ### JS
 
 ```javascript
-	(new choona.createModule("applicationContainer", myApp.application)).start();
-
-Or
 	var module1 = new choona.createModule("applicationContainer", myApp.application);
 	module1.start();
 	module1.end();
@@ -85,16 +82,6 @@ Or
 
 ### Hello World Module
 
-```javascript
-(new choona.createModule("applicationContainer", {
-	start : function(){
-		$(this.$).append("<p>THIS IS HEADER PANEL</p>");
-	},
-	end: function(){
-	
-	}
-})).start();
-```	
 ** inside Module - this.$ is basically a DOM object === document.getElementById("applicationContainer");
 ** $(this.$) is jQuery DOM object. $(this.$) === $("#applicationContainer");
 
