@@ -12,7 +12,7 @@ myApp.navigator = {
 	callServer: function(){
 		var self = this;
 		$.ajax({
-			url:"../server/links",
+			url:"../../server/links",
 			dataType: "json"
 		})
 		.done(function(data){

@@ -34,7 +34,7 @@ myApp.blogDisplayPanel = {
 		var self = this;
 		
 		$.ajax({
-			url:"../server/blogs",
+			url:"../../server/blogs",
 			dataType: "json"
 		})
 		.done(function(data){
