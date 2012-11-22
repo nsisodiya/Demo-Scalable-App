@@ -20,8 +20,11 @@ principles. This dema application work a starting point to develop such applicat
 
 Demo
 =======
-* 
-
+* View files https://github.com/nsisodiya/Demo-Scalable-App/tree/master/demo
+* 1_helloworld = HelloWorld moule
+* 2_Addition-PubSub = Demo of PubSub and Hom one module will interact with other
+* 3_Blog-Application = Small Sample Website which has 5 module.
+* 4_Blog-Application-Requirejs = Rewritten (3_Blog-Application), using Requirejs
 
 Basic Needs
 ============
