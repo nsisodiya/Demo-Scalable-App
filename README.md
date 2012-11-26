@@ -73,12 +73,12 @@ Coding Tutorial
 ### JS
 
 ```javascript
-	var module1 = new choona.createModule("applicationContainer", myApp.application);
+	var module1 = new choona.loadApplication("applicationContainer", myApp.application);
 	module1.start();
 	module1.end();
 ```
 * myAll.application is a JavaScript Module Object. I will explain it latter
-* API provided by choona.createModule
+* API provided by choona.loadApplication
 ** start() - It  start a module
 ** end() - It stop a module
 * So If you want to stop a module then you can do it.  Ex -  module1.stop()
@@ -111,12 +111,12 @@ var myApp.helloWorld = {
 };
 
 var config = {};
-var module1 = new choona.createModule("applicationContainer", myApp.helloWorld, config);
+var module1 = new choona.loadApplication("applicationContainer", myApp.helloWorld, config);
 module1.start();
 ```
 
 ### Flow of execution
-* you create a module using choona.createModule by passing an ID and Module Object. Module Object has start, end function. start function inside module will be executed automatically.
+* you create a module using choona.loadApplication by passing an ID and Module Object. Module Object has start, end function. start function inside module will be executed automatically.
 
 ### Variable available inside a module
 		*	this.id = Id of module. == applicationContainer
@@ -130,7 +130,7 @@ module1.start();
 
 * this.sb.publish  => Send Signals
 * this.sb.subscribe  ==> Recieve Signals
-* this.sb.createChildModule  ==> Load modules inside another module
+* this.sb.loadModule  ==> Load modules inside another module
 
 You need not to unsubscribe the Signals. these will be unsubscribed automatically when a module ends.
 
@@ -141,7 +141,7 @@ You need not to unsubscribe the Signals. these will be unsubscribed automaticall
 ```html
 	<script type="text/javascript" src="./myApp.js"></script>
 	<script type="text/javascript">
-  		var application = new choona.createModule("applicationContainer", myApp.application);
+  		var application = new choona.loadApplication("applicationContainer", myApp.application);
 			application.start();
 	</script> 
 ```
@@ -161,8 +161,8 @@ myApp.application = {
 			</div>\
 		');
 		
-		this.inputbox = this.sb.createChildModule('inputbox',myApp.inputbox);
-		this.resultbox = this.sb.createChildModule('resultbox',myApp.resultbox);
+		this.inputbox = this.sb.loadModule('inputbox',myApp.inputbox);
+		this.resultbox = this.sb.loadModule('resultbox',myApp.resultbox);
 		
 		this.inputbox.start();
 		this.resultbox.start();
