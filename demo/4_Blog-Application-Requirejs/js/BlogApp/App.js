@@ -20,13 +20,13 @@ define(["./blogDisplayPanel/blogDisplayPanel","./navigator/navigator","./footer/
 			$(this.$).append(_.template(this.template, { id: this.id }));
 		},
 		loadModules: function(){
-			this.blogDisplayModule = this.sb.createChildModule(this.id + "_blogDisplayContainer", blogDisplayPanel);
+			this.blogDisplayModule = this.sb.loadModule(this.id + "_blogDisplayContainer", blogDisplayPanel);
 	
-			this.headerModule = this.sb.createChildModule(this.id + "_header", header);
+			this.headerModule = this.sb.loadModule(this.id + "_header", header);
 	
-			this.navigatorModule = this.sb.createChildModule(this.id + "_navigator", navigator);
+			this.navigatorModule = this.sb.loadModule(this.id + "_navigator", navigator);
 	
-			this.footerModule = this.sb.createChildModule(this.id + "_footer", footer);
+			this.footerModule = this.sb.loadModule(this.id + "_footer", footer);
 
 	
 			this.blogDisplayModule.start();

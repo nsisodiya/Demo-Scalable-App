@@ -13,18 +13,17 @@ myApp.application =  {
 		delete this.navigatorModule;
 		delete this.footerModule;
 	},
-
 	initHTML: function(){
 		$(this.$).append(_.template(this.template, { id: this.id }));
 	},
 	loadModules: function(){
-		this.blogDisplayModule = this.sb.createChildModule(this.id + "_blogDisplayContainer", myApp.blogDisplayPanel);
+		this.blogDisplayModule = this.sb.loadModule(this.id + "_blogDisplayContainer", myApp.blogDisplayPanel);
 	
-		this.headerModule = this.sb.createChildModule(this.id + "_header", myApp.header);
+		this.headerModule = this.sb.loadModule(this.id + "_header", myApp.header);
 	
-		this.navigatorModule = this.sb.createChildModule(this.id + "_navigator", myApp.navigator);
+		this.navigatorModule = this.sb.loadModule(this.id + "_navigator", myApp.navigator);
 	
-		this.footerModule = this.sb.createChildModule(this.id + "_footer", myApp.footer);
+		this.footerModule = this.sb.loadModule(this.id + "_footer", myApp.footer);
 
 	
 		this.blogDisplayModule.start();

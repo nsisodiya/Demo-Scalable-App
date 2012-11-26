@@ -9,8 +9,8 @@ myApp.application = {
 			</div>\
 		');
 		
-		this.inputbox = this.sb.createChildModule('inputbox',myApp.inputbox);
-		this.resultbox = this.sb.createChildModule('resultbox',myApp.resultbox);
+		this.inputbox = this.sb.loadModule('inputbox',myApp.inputbox);
+		this.resultbox = this.sb.loadModule('resultbox',myApp.resultbox);
 		
 		this.inputbox.start();
 		this.resultbox.start();
