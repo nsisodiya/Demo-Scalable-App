@@ -21,10 +21,10 @@ principles. This dema application work a starting point to develop such applicat
 Demo
 =======
 * View files https://github.com/nsisodiya/Demo-Scalable-App/tree/master/demo
-* 1_helloworld = [http://nsisodiya.github.com/Demo-Scalable-App/demo/1_helloworld/Index.html HelloWorld module] 
-* 2_Addition-PubSub = Demo of PubSub and Hom one module will interact with other
-* 3_Blog-Application = Small Sample Website which has 5 module.
-* 4_Blog-Application-Requirejs = Rewritten (3_Blog-Application), using Requirejs
+* 1_helloworld = HelloWorld module - http://nsisodiya.github.com/Demo-Scalable-App/demo/1_helloworld/Index.html
+* 2_Addition-PubSub = Demo of PubSub and Hom one module will interact with other - http://nsisodiya.github.com/Demo-Scalable-App/demo/2_Addition-PubSub/Index.html
+* *3_Blog-Application = Small Sample Website which has 5 module.* - http://nsisodiya.github.com/Demo-Scalable-App/demo/3_Blog-Application/Index.html
+* 4_Blog-Application-Requirejs = Rewritten (3_Blog-Application), using Requirejs - http://nsisodiya.github.com/Demo-Scalable-App/demo/4_Blog-Application-Requirejs/Index.html
 
 Basic Needs
 ============
