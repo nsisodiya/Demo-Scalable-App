@@ -7,7 +7,7 @@ define(["./blogDisplayPanel/blogDisplayPanel","./navigator/navigator","./footer/
 			<div class="footer" id="<%= id %>_footer"></div>',
 		start: function(){
 			this.initHTML();
-			this.loadModules();
+			this.startModules();
 		},
 		end: function(){
 			delete this.blogDisplayModule;
@@ -19,20 +19,15 @@ define(["./blogDisplayPanel/blogDisplayPanel","./navigator/navigator","./footer/
 		initHTML: function(){
 			$(this.$).append(_.template(this.template, { id: this.id }));
 		},
-		loadModules: function(){
-			this.blogDisplayModule = this.sb.loadModule(this.id + "_blogDisplayContainer", blogDisplayPanel);
+		startModules: function(){
+			this.blogDisplayModule = this.sb.startModule(this.id + "_blogDisplayContainer", blogDisplayPanel);
 	
-			this.headerModule = this.sb.loadModule(this.id + "_header", header);
+			this.headerModule = this.sb.startModule(this.id + "_header", header);
 	
-			this.navigatorModule = this.sb.loadModule(this.id + "_navigator", navigator);
+			this.navigatorModule = this.sb.startModule(this.id + "_navigator", navigator);
 	
-			this.footerModule = this.sb.loadModule(this.id + "_footer", footer);
+			this.footerModule = this.sb.startModule(this.id + "_footer", footer);
 
-	
-			this.blogDisplayModule.start();
-			this.headerModule.start();
-			this.navigatorModule.start();
-			this.footerModule.start();
 		}
 	};
  

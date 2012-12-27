@@ -8,9 +8,20 @@ myApp.blogDisplayPanel = {
 	},
 
 	initHTML: function(){
-		$(this.$).append("<p>THIS IS BLOG PANEL</p>");
+		$(this.$).append('<div id="buttonPanel"><input type="button" id="UnSubscribe" value="UnSubscribe - Disconnect from Signals"/></div><div id="blog"></div>');
 		this.subscribeEvents();
+		this.addHandlers();
 		this.callServer();
+	},
+	addHandlers: function(){
+		var self = this;
+		$(this.$).find("#UnSubscribe").toggle(function(){
+			self.sb.unsubscribe("onBlogLinkSelected");
+			this.value = "Subscribe - Get Signals";
+		},function(){
+			self.subscribeEvents();
+			this.value = "UnSubscribe - Disconnect from Signals";
+		});
 	},
 	subscribeEvents: function(){
 		var self = this;
@@ -25,7 +36,7 @@ myApp.blogDisplayPanel = {
 		if(this.allBlogs == undefined){
 			alert("Data Not Loaded From Server");
 		}else{
-			$(this.$).html('<p>' + this.allBlogs[id].text + '</p>');
+			$(this.$).find("#blog").html('<p>' + this.allBlogs[id].text + '</p>');
 		}
 	
 	},

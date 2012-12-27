@@ -9,7 +9,7 @@ Learning
 Quick start to understand two key concepts
 
 * How to split your application into multiple modules.
-* How one module talk to other module.
+* How one module talk to amother module.
  
 What is this
 ============
@@ -57,7 +57,7 @@ I have used choona.js library for this Demo. I have created choona.js which fit 
 
 LICENSE
 ===========
-* BSD - OpenSource.
+* MIT - http://nsisodiya.mit-license.org
 
 Coding Tutorial
 =============
@@ -119,18 +119,21 @@ module1.start();
 * you create a module using choona.loadApplication by passing an ID and Module Object. Module Object has start, end function. start function inside module will be executed automatically.
 
 ### Variable available inside a module
-		*	this.id = Id of module. == applicationContainer
-		*	this.$ = Dom Element == document.getElementById(this.id);
-		*	$(this.$) = jQ  Element == $("#applicationContainer");
-		*	this.config ===== Configuration 
-		*	this.sb ==== instance of sandbox associated with module. It provide useful API
-
+```
+*	this.id => Id of module. == applicationContainer
+*	this.$ => Dom Element == document.getElementById(this.id);
+*	$(this.$) => jQ  Element == $("#applicationContainer");
+*	this.config => Configuration 
+*	this.sb => instance of sandbox associated with module. It provide useful API
+```
 ## Sanbox API
 * Module is provided by instance of sanbox. sandbox element provide API.
 
-* this.sb.publish  => Send Signals
+* this.sb.publish  ==> Send Signals
 * this.sb.subscribe  ==> Recieve Signals
-* this.sb.loadModule  ==> Load modules inside another module
+* this.sb.unsubscribe  ==> Stop recieving Signals
+* this.sb.startModule  ==> Load a child module inside current module
+* this.sb.startModule  ==> End a child module inside current module
 
 You need not to unsubscribe the Signals. these will be unsubscribed automatically when a module ends.
 
@@ -161,11 +164,8 @@ myApp.application = {
 			</div>\
 		');
 		
-		this.inputbox = this.sb.loadModule('inputbox',myApp.inputbox);
-		this.resultbox = this.sb.loadModule('resultbox',myApp.resultbox);
-		
-		this.inputbox.start();
-		this.resultbox.start();
+		this.inputbox = this.sb.startModule('inputbox',myApp.inputbox);
+		this.resultbox = this.sb.startModule('resultbox',myApp.resultbox);
 		
 	},
 	end:  function(){

@@ -9,11 +9,8 @@ myApp.application = {
 			</div>\
 		');
 		
-		this.inputbox = this.sb.loadModule('inputbox',myApp.inputbox);
-		this.resultbox = this.sb.loadModule('resultbox',myApp.resultbox);
-		
-		this.inputbox.start();
-		this.resultbox.start();
+		this.inputbox = this.sb.startModule('inputbox',myApp.inputbox);
+		this.resultbox = this.sb.startModule('resultbox',myApp.resultbox);
 		
 	},
 	end:  function(){
