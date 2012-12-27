@@ -1,30 +1,31 @@
-Demo-Scalable-App
-=================
-
-This is small demo of Scalable JavaScript Application using Choona.js.
-Choona.js (https://github.com/nsisodiya/choona.js) is a very small library for creating Scalable and Modular Javascript Application. 
-
-Learning
+Choona.js
 =========
-Quick start to understand two key concepts
-
-* How to split your application into multiple modules.
-* How one module talk to amother module.
- 
-What is this
-============
 
 Consider website like gmail.com or other web based application where large team try
 maintain the codebase. Such large scale application must follow some architecture and 
 principles. This dema application work a starting point to develop such application.
 
+Choona.js (https://github.com/nsisodiya/choona.js) is a very small library for creating Scalable and Modular Javascript Application. 
+
+Choona.js API
+=============
+* visit https://github.com/nsisodiya/choona.js
+
+
 Demo
-=======
+=====
+Read Code, After reading code you can learn how to code with Choona.js. Demos are very very simple.
+Any novice programmer can write such demo. I have re-written those simple demos with Choona.js to add Scalability and
+Code reusability.
+
+
 * View files https://github.com/nsisodiya/Demo-Scalable-App/tree/master/demo
+
 * 1_helloworld = HelloWorld module - http://nsisodiya.github.com/Demo-Scalable-App/demo/1_helloworld/Index.html
 * 2_Addition-PubSub = Demo of PubSub and Hom one module will interact with other - http://nsisodiya.github.com/Demo-Scalable-App/demo/2_Addition-PubSub/Index.html
-* *3_Blog-Application = Small Sample Website which has 5 module.* - http://nsisodiya.github.com/Demo-Scalable-App/demo/3_Blog-Application/Index.html
+* 3_Blog-Application = Small Sample Website which has 5 module.* - http://nsisodiya.github.com/Demo-Scalable-App/demo/3_Blog-Application/Index.html
 * 4_Blog-Application-Requirejs = Rewritten (3_Blog-Application), using Requirejs - http://nsisodiya.github.com/Demo-Scalable-App/demo/4_Blog-Application-Requirejs/Index.html
+
 
 Basic Needs
 ============
@@ -33,7 +34,6 @@ Basic Needs
 * Application, it should be easy to debug and develop
 * Application should be reusable
 
-
 Basic Concepts
 ==============
 
@@ -41,6 +41,14 @@ Basic Concepts
 * So you may have situation like this - module A depends on B & C. Module B depends on D etc
 * try to develop as many as modules as you can but they should not overlap in functionality. Example - You should not create 2 modules which have 80% functioanily common with each other.
 * Module will talk to other module using Events - Pub/Sub Architecture.
+
+Learning
+=========
+Quick start to understand two key concepts
+
+* How to split your application into multiple modules.
+* How one module talk to amother module.
+
 
 Links
 ===============
@@ -60,36 +68,12 @@ LICENSE
 * MIT - http://nsisodiya.mit-license.org
 
 Coding Tutorial
-=============
+===============
 ## Module Creation
 * Module = Empty Div (html) + JS Module Object(js) + Configuration (optional)
 * For creating a Module, You need one Empty Div/HTML element where you wil load module. You need to specify id of module
 
-
-### HTML
-```html
-	<div id='applicationContainer'></div>
-```
-### JS
-
-```javascript
-	var module1 = new choona.loadApplication("applicationContainer", myApp.application);
-	module1.start();
-	module1.end();
-```
-* myAll.application is a JavaScript Module Object. I will explain it latter
-* API provided by choona.loadApplication
-** start() - It  start a module
-** end() - It stop a module
-* So If you want to stop a module then you can do it.  Ex -  module1.stop()
-
 ### Hello World Module
-
-** inside Module - this.$ is basically a DOM object === document.getElementById("applicationContainer");
-** $(this.$) is jQuery DOM object. $(this.$) === $("#applicationContainer");
-
-** The above module can be written as 
-
 ```javascript
 var myApp = {};
 
@@ -118,24 +102,6 @@ module1.start();
 ### Flow of execution
 * you create a module using choona.loadApplication by passing an ID and Module Object. Module Object has start, end function. start function inside module will be executed automatically.
 
-### Variable available inside a module
-```
-*	this.id => Id of module. == applicationContainer
-*	this.$ => Dom Element == document.getElementById(this.id);
-*	$(this.$) => jQ  Element == $("#applicationContainer");
-*	this.config => Configuration 
-*	this.sb => instance of sandbox associated with module. It provide useful API
-```
-## Sanbox API
-* Module is provided by instance of sanbox. sandbox element provide API.
-
-* this.sb.publish  ==> Send Signals
-* this.sb.subscribe  ==> Recieve Signals
-* this.sb.unsubscribe  ==> Stop recieving Signals
-* this.sb.startModule  ==> Load a child module inside current module
-* this.sb.startModule  ==> End a child module inside current module
-
-You need not to unsubscribe the Signals. these will be unsubscribed automatically when a module ends.
 
 ## Example of Module to Module Communication
 
