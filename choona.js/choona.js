@@ -1,13 +1,17 @@
-//     choona.js 1.0.0
+/*     choona.js 1.0.1
 
-//     (c) 2011-2012 Narendra Sisodiya, narendra@narendrasisodiya.com
-//     choona.js is distributed under the MIT license.
-//     For all details and documentation:
-//     https://github.com/nsisodiya/choona.js
-//     For demos using Choona.js
-//     https://github.com/nsisodiya/Demo-Scalable-App
-
-
+     (c) 2011-2012 Narendra Sisodiya, narendra@narendrasisodiya.com
+     choona.js is distributed under the MIT license.
+     For all details and documentation:
+     https://github.com/nsisodiya/choona.js
+     For demos using Choona.js
+     http://nsisodiya.github.com/Demo-Scalable-App/
+     
+     
+     Change Log
+     1.0.1 - Added document.querySelector
+     
+*/
 var choona = (function(){
 
 	var Util = {
@@ -79,7 +83,7 @@ var choona = (function(){
 			if(this.moduleList[id] === undefined){
 				//You cannot load more than 1 module at given Id.
 				//There is No module Loaded.
-				this.moduleList[id] = new AppCore(id, creator, config);
+				this.moduleList[id] = new AppCore(id, creator, config, this.$);
 				this.moduleList[id].start();
 			}else{
 				throw new Error("id::" + id  + " is already contains a module.  Please provide separate id new module");
@@ -92,17 +96,21 @@ var choona = (function(){
 		}
 	};
 
-	var AppCore = function(id, protoObj_Module, config){
-	
+	var AppCore = function(id, protoObj_Module, config, parentNode){
+		
 		var defaultCreator = function(sandbox, config){
 			this.sb = sandbox;
 			this.id = sandbox.id;			//Id of Container - This may be require to create Unique Ids
-			this.$ =  document.getElementById(this.id);		//Id must be Unique. You must load Unique ID for any module which has any UI element.
-			//@TODO - create a new ID if ID provided is Null or Undefined
+			if(parentNode === undefined){
+				this.$ = document.querySelector( "#" + this.id);
+			}else{
+				this.$ = parentNode.querySelector( "#" + this.id);
+			}
+			//Id need to be Unique.
+			this.sb.$ = this.$;
 			this.config = config;
 		};
 		defaultCreator.prototype = protoObj_Module;
-		
 		this.module = new defaultCreator( new Sandbox(id) , config);
 	
 	};
