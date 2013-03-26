@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Demo-scalable-app : This is small demo of Scalable JavaScript Application" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Demo-scalable-app</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/nsisodiya/Demo-Scalable-App">View on GitHub</a>
+
+          <h1 id="project_title">Demo-scalable-app</h1>
+          <h2 id="project_tagline">This is small demo of Scalable JavaScript Application</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/nsisodiya/Demo-Scalable-App/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/nsisodiya/Demo-Scalable-App/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<article itemprop="mainContentOfPage" class="markdown-body entry-content"><h1>
+<a href="#demo-scalable-app" class="anchor" name="demo-scalable-app"><span class="mini-icon mini-icon-link"></span></a>Demo-Scalable-App</h1>
+
+<p>This is small demo of Scalable JavaScript Application using Choona.js.
+Choona.js (<a href="https://github.com/nsisodiya/choona.js">https://github.com/nsisodiya/choona.js</a>) is a very small library for creating Scalable and Modular Javascript Application. </p>
+
+<h1>
+<a href="#learning" class="anchor" name="learning"><span class="mini-icon mini-icon-link"></span></a>Learning</h1>
+
+<p>Quick start to understand two key concepts</p>
+
+<ul>
+<li>How to split your application into multiple modules.</li>
+<li>How one module talk to amother module.</li>
+</ul><h1>
+<a href="#what-is-this" class="anchor" name="what-is-this"><span class="mini-icon mini-icon-link"></span></a>What is this</h1>
+
+<p>Consider website like gmail.com or other web based application where large team try
+maintain the codebase. Such large scale application must follow some architecture and 
+principles. This dema application work a starting point to develop such application.</p>
+
+<h1>
+<a href="#demo" class="anchor" name="demo"><span class="mini-icon mini-icon-link"></span></a>Demo</h1>
+
+<ul>
+<li>View files <a href="https://github.com/nsisodiya/Demo-Scalable-App/tree/master/demo">https://github.com/nsisodiya/Demo-Scalable-App/tree/master/demo</a>
+</li>
+
+
+<li>1_helloworld = <a href="http://nsisodiya.github.com/Demo-Scalable-App/demo/1_helloworld/Index.html">HelloWorld moule</a></li>
+<li>2_Addition-PubSub = <a href="http://nsisodiya.github.com/Demo-Scalable-App/demo/2_Addition-PubSub/Index.html">Demo of PubSub and Hom one module will interact with other</a></li>
+<li>3_Blog-Application = <a href="http://nsisodiya.github.com/Demo-Scalable-App/demo/3_Blog-Application/Index.html">Small Sample Website which has 5 module.</a></li>
+<li>4_Blog-Application-Requirejs = <a href="http://nsisodiya.github.com/Demo-Scalable-App/demo/4_Blog-Application-Requirejs/Index.html">Rewritten (3_Blog-Application), using Requirejs</a></li>
+</ul><h1>
+<a href="#basic-needs" class="anchor" name="basic-needs"><span class="mini-icon mini-icon-link"></span></a>Basic Needs</h1>
+
+<ul>
+<li>Application must be scalable</li>
+<li>Application, it should be easy to debug and develop</li>
+<li>Application should be reusable</li>
+</ul><h1>
+<a href="#basic-concepts" class="anchor" name="basic-concepts"><span class="mini-icon mini-icon-link"></span></a>Basic Concepts</h1>
+
+<ul>
+<li>Whole application, splitted into multiple modules, modules may be dependant on other modules</li>
+<li>So you may have situation like this - module A depends on B &amp; C. Module B depends on D etc</li>
+<li>try to develop as many as modules as you can but they should not overlap in functionality. Example - You should not create 2 modules which have 80% functioanily common with each other.</li>
+<li>Module will talk to other module using Events - Pub/Sub Architecture.</li>
+</ul><h1>
+<a href="#links" class="anchor" name="links"><span class="mini-icon mini-icon-link"></span></a>Links</h1>
+
+<ul>
+<li>
+<a href="http://www.youtube.com/watch?v=vXjVFPosQHw">http://www.youtube.com/watch?v=vXjVFPosQHw</a> - Video - ( Nicholas Zakas: Scalable JavaScript Application Architecture</li>
+<li>
+<a href="http://www.slideshare.net/nzakas/scalable-javascript-application-architecture">http://www.slideshare.net/nzakas/scalable-javascript-application-architecture</a> Slides - </li>
+<li>
+<a href="http://www.ubelly.com/2011/11/scalablejs/">http://www.ubelly.com/2011/11/scalablejs/</a> Blog</li>
+<li>
+<a href="https://github.com/flosse/scaleApp">https://github.com/flosse/scaleApp</a> Implementation 1</li>
+<li>
+<a href="https://github.com/aranm/scalable-javascript-architecture">https://github.com/aranm/scalable-javascript-architecture</a> Implementation 2</li>
+<li>
+<a href="https://github.com/eric-brechemier/lb_js_scalableApp">https://github.com/eric-brechemier/lb_js_scalableApp</a> Implementation 3</li>
+</ul><p>I have used choona.js library for this Demo. I have created choona.js which fit best for my needs</p>
+
+<ul>
+<li>visit <a href="https://github.com/nsisodiya/choona.js">https://github.com/nsisodiya/choona.js</a>
+</li>
+</ul><h1>
+<a href="#license" class="anchor" name="license"><span class="mini-icon mini-icon-link"></span></a>LICENSE</h1>
+
+<ul>
+<li>MIT - <a href="http://nsisodiya.mit-license.org">http://nsisodiya.mit-license.org</a>
+</li>
+</ul><h1>
+<a href="#coding-tutorial" class="anchor" name="coding-tutorial"><span class="mini-icon mini-icon-link"></span></a>Coding Tutorial</h1>
+
+<h2>
+<a href="#module-creation" class="anchor" name="module-creation"><span class="mini-icon mini-icon-link"></span></a>Module Creation</h2>
+
+<ul>
+<li>Module = Empty Div (html) + JS Module Object(js) + Configuration (optional)</li>
+<li>For creating a Module, You need one Empty Div/HTML element where you wil load module. You need to specify id of module</li>
+</ul><h3>
+<a href="#html" class="anchor" name="html"><span class="mini-icon mini-icon-link"></span></a>HTML</h3>
+
+<div class="highlight"><pre>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'applicationContainer'</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+
+<h3>
+<a href="#js" class="anchor" name="js"><span class="mini-icon mini-icon-link"></span></a>JS</h3>
+
+<div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">module1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">choona</span><span class="p">.</span><span class="nx">loadApplication</span><span class="p">(</span><span class="s2">"applicationContainer"</span><span class="p">,</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">application</span><span class="p">);</span>
+    <span class="nx">module1</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+    <span class="nx">module1</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</pre></div>
+
+<ul>
+<li>myAll.application is a JavaScript Module Object. I will explain it latter</li>
+<li>API provided by choona.loadApplication
+** start() - It  start a module
+** end() - It stop a module</li>
+<li>So If you want to stop a module then you can do it.  Ex -  module1.stop()</li>
+</ul><h3>
+<a href="#hello-world-module" class="anchor" name="hello-world-module"><span class="mini-icon mini-icon-link"></span></a>Hello World Module</h3>
+
+<p>** inside Module - this.$ is basically a DOM object === document.getElementById("applicationContainer");
+** $(this.$) is jQuery DOM object. $(this.$) === $("#applicationContainer");</p>
+
+<p>** The above module can be written as </p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="kd">var</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">helloWorld</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">start</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">"&lt;p&gt;THIS IS HEADER PANEL&lt;/p&gt;"</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">        *   this.id = Id of module. == applicationContainer</span>
+<span class="cm">        *   this.$ = Dom Element == document.getElementById(this.id);</span>
+<span class="cm">        *   $(this.$) = jQ  Element == $("#applicationContainer");</span>
+<span class="cm">        *   this.config ===== Configuration </span>
+<span class="cm">        *   this.sb ==== instance of sandbox associated with module. It provide useful API</span>
+<span class="cm">        */</span>
+    <span class="p">},</span>
+    <span class="nx">end</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">var</span> <span class="nx">module1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">choona</span><span class="p">.</span><span class="nx">loadApplication</span><span class="p">(</span><span class="s2">"applicationContainer"</span><span class="p">,</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">helloWorld</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
+<span class="nx">module1</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a href="#flow-of-execution" class="anchor" name="flow-of-execution"><span class="mini-icon mini-icon-link"></span></a>Flow of execution</h3>
+
+<ul>
+<li>you create a module using choona.loadApplication by passing an ID and Module Object. Module Object has start, end function. start function inside module will be executed automatically.</li>
+</ul><h3>
+<a href="#variable-available-inside-a-module" class="anchor" name="variable-available-inside-a-module"><span class="mini-icon mini-icon-link"></span></a>Variable available inside a module</h3>
+
+<pre><code>*   this.id =&gt; Id of module. == applicationContainer
+*   this.$ =&gt; Dom Element == document.getElementById(this.id);
+*   $(this.$) =&gt; jQ  Element == $("#applicationContainer");
+*   this.config =&gt; Configuration 
+*   this.sb =&gt; instance of sandbox associated with module. It provide useful API
+</code></pre>
+
+<h2>
+<a href="#sanbox-api" class="anchor" name="sanbox-api"><span class="mini-icon mini-icon-link"></span></a>Sanbox API</h2>
+
+<ul>
+<li><p>Module is provided by instance of sanbox. sandbox element provide API.</p></li>
+<li><p>this.sb.publish  ==&gt; Send Signals</p></li>
+<li><p>this.sb.subscribe  ==&gt; Recieve Signals</p></li>
+<li><p>this.sb.unsubscribe  ==&gt; Stop recieving Signals</p></li>
+<li><p>this.sb.startModule  ==&gt; Load a child module inside current module</p></li>
+<li><p>this.sb.startModule  ==&gt; End a child module inside current module</p></li>
+</ul><p>You need not to unsubscribe the Signals. these will be unsubscribed automatically when a module ends.</p>
+
+<h2>
+<a href="#example-of-module-to-module-communication" class="anchor" name="example-of-module-to-module-communication"><span class="mini-icon mini-icon-link"></span></a>Example of Module to Module Communication</h2>
+
+<h3>
+<a href="#html-1" class="anchor" name="html-1"><span class="mini-icon mini-icon-link"></span></a>HTML</h3>
+
+<div class="highlight"><pre>    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"./myApp.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+        <span class="kd">var</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">choona</span><span class="p">.</span><span class="nx">loadApplication</span><span class="p">(</span><span class="s2">"applicationContainer"</span><span class="p">,</span> <span class="nx">myApp</span><span class="p">.</span><span class="nx">application</span><span class="p">);</span>
+            <span class="nx">application</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+    <span class="nt">&lt;/script&gt;</span> 
+</pre></div>
+
+<ul>
+<li>JS </li>
+</ul><div class="highlight"><pre><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">application</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">start</span><span class="o">:</span>  <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'\</span>
+<span class="s1">            &lt;div&gt;\</span>
+<span class="s1">                &lt;div id="inputbox"/&gt;\</span>
+<span class="s1">                &lt;div id="resultbox"/&gt;\</span>
+<span class="s1">            &lt;/div&gt;\</span>
+<span class="s1">        '</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">inputbox</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">sb</span><span class="p">.</span><span class="nx">startModule</span><span class="p">(</span><span class="s1">'inputbox'</span><span class="p">,</span><span class="nx">myApp</span><span class="p">.</span><span class="nx">inputbox</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">resultbox</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">sb</span><span class="p">.</span><span class="nx">startModule</span><span class="p">(</span><span class="s1">'resultbox'</span><span class="p">,</span><span class="nx">myApp</span><span class="p">.</span><span class="nx">resultbox</span><span class="p">);</span>
+
+    <span class="p">},</span>
+    <span class="nx">end</span><span class="o">:</span>  <span class="kd">function</span><span class="p">(){</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">inputbox</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="nx">start</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'\</span>
+<span class="s1">            &lt;div class="inputbox"&gt;\</span>
+<span class="s1">                &lt;input id="value1" type="text" /&gt;\</span>
+<span class="s1">                &lt;input id="value2" type="text" /&gt;\</span>
+<span class="s1">                &lt;input id="add" type="button" value="Add"&gt;\</span>
+<span class="s1">            &lt;/div&gt;\</span>
+<span class="s1">        '</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">"#add"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="c1">//Send the signal to Result box</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">sb</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s1">'toResultBox'</span><span class="p">,</span> <span class="p">{</span>
+                <span class="nx">val1</span> <span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">"#value1"</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
+                <span class="nx">val2</span> <span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">"#value2"</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+
+    <span class="p">},</span>
+    <span class="nx">end</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">resultbox</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="nx">start</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'\</span>
+<span class="s1">            &lt;div id="resultbox" class="resultbox"&gt;\</span>
+<span class="s1">            &lt;/div&gt;\</span>
+<span class="s1">        '</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">sb</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'toResultBox'</span><span class="p">,</span> 
+            <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">){</span>
+                <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">val1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">val2</span><span class="p">);</span>
+                <span class="nx">$</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">"#resultbox"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">end</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</pre></div></article>
+      </section>
+	</div>
+ 
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Demo-scalable-app maintained by <a href="https://github.com/nsisodiya">nsisodiya</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
