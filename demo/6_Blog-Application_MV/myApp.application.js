@@ -1,21 +1,27 @@
 myApp.application =  {
 	
 	template: '<div class="header"><input type="button" id="navKillButton" value="End Navigator Module"/><input type="button" id="panelKillButton" value="End Display Panel Module"/></div>\
+		<div class="header" id="<%= id_header %>"></div>\
 		<div class="navigator" id="<%= id_navigator %>"></div>\
-		<div class="blogDisplayPanel" id="<%= id_blogDisplayContainer %>"></div>',
+		<div class="blogDisplayPanel" id="<%= id_blogDisplayContainer %>"></div>\
+		<div class="footer" id="<%= id_footer %>"></div>',
 	start : function() {
-		this.localEventBus = this.sb.getNewEventBus();
-	
 		this.moduleMap = {
 			blogDisplayContainer : {
 				id : "blogDisplayContainer",
-				module : myApp.blogDisplayPanel,
-				eventBus: this.localEventBus
+				module : myApp.blogDisplayPanelView
+			},
+			header : {
+				id : "header",
+				module : myApp.header
 			},
 			navigator : {
 				id : "navigator",
-				module : myApp.navigator,
-				eventBus: this.localEventBus
+				module : myApp.navigator
+			},
+			footer : {
+				id : "footer",
+				module : myApp.footer
 			}
 		};
 
@@ -46,12 +52,17 @@ myApp.application =  {
 	},
 	initHTML : function() {
 		$(this.$).append(_.template(this.template, {
+			id_header : this.moduleMap.header.id,
 			id_navigator : this.moduleMap.navigator.id,
-			id_blogDisplayContainer : this.moduleMap.blogDisplayContainer.id
+			id_blogDisplayContainer : this.moduleMap.blogDisplayContainer.id,
+			id_footer : this.moduleMap.footer.id,
 		}));
 	},
 	startModule: function(id){
-		this.sb.startModule(this.moduleMap[id]);
+		this.sb.startModule({
+			id:this.moduleMap[id].id, 
+			module: this.moduleMap[id].module
+		});
 	},
 	endModule: function(id){
 		this.sb.endModule(this.moduleMap[id].id);
@@ -59,7 +70,11 @@ myApp.application =  {
 	startAllModules: function(){
 		var self = this;
 		$.each(this.moduleMap,function(i,v){
-			self.sb.startModule(v);
+			try{
+				self.sb.startModule(v);
+			}catch(ex){
+				choona.util.log(ex);
+			}
 		});
 	}
 };

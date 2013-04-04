@@ -6,30 +6,29 @@ define(function(){
 
 		},
 		end: function(){
-
 		},
 
 		initHTML: function(){
-			$(this.$).append("<p>THIS IS BLOG PANEL</p>");
+			var self = this;
+		
+			this.blogEle = $('<div></div>');
+		
+			$(this.$).append($('<div id="buttonPanel"></div>').append(this.blogEle));
+		
 			this.subscribeEvents();
 			this.callServer();
 		},
 		subscribeEvents: function(){
 			var self = this;
 			this.sb.subscribe( 'onBlogLinkSelected',
-				function(value){
-					//console.log('Event Received');
-					self.loadBlog(value);
+				function(id){
+					choona.util.log('Event Received - onBlogLinkSelected => ' + id);
+					if(self.allBlogs == undefined){
+						alert("Data Not Loaded From Server");
+					}else{
+						self.blogEle.html('<p>' + self.allBlogs[id].text + '</p>');
+					}
 				});
-		},
-
-		loadBlog: function(id){
-			if(this.allBlogs == undefined){
-				alert("Data Not Loaded From Server");
-			}else{
-				$(this.$).html('<p>' + this.allBlogs[id].text + '</p>');
-			}
-	
 		},
 
 		callServer: function(){
@@ -43,6 +42,6 @@ define(function(){
 				self.allBlogs = data;
 			});
 
-		},
+		}
 	};
 });

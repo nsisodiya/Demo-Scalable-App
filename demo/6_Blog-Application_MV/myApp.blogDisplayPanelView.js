@@ -1,15 +1,11 @@
-myApp.blogDisplayPanel = {
+myApp.blogDisplayPanelView = {
 
 	start: function(){
-		this.initHTML();
-
-	},
-	end: function(){
-	},
-
-	initHTML: function(){
 		var self = this;
 		
+		this.Panel = new myApp.blogDisplayPanelModel();
+		this.Panel.loadDataFromServer();
+
 		this.blogEle = $('<div></div>');
 		
 		var subscribeUnsubButton = $('<input type="button" id="UnSubscribe" value="UnSubscribe - Disconnect from Signals"/></div');
@@ -24,32 +20,22 @@ myApp.blogDisplayPanel = {
 		
 		$(this.$).append($('<div id="buttonPanel"></div>').append( subscribeUnsubButton, this.blogEle));
 		
+		this.Panel.on("PanelDataChanged", function(data){
+			self.blogEle.html('<p>' + data.text + '</p>');
+		});
+		
 		this.subscribeEvents();
-		this.callServer();
+		
 	},
 	subscribeEvents: function(){
 		var self = this;
-		this.sb.subscribe( 'onBlogLinkSelected',
-			function(id){
-				choona.util.log('Event Received - onBlogLinkSelected => ' + id);
-				if(self.allBlogs == undefined){
-					alert("Data Not Loaded From Server");
-				}else{
-					self.blogEle.html('<p>' + self.allBlogs[id].text + '</p>');
-				}
-			});
-	},
-
-	callServer: function(){
-		var self = this;
-		
-		$.ajax({
-			url:"../../server/blogs",
-			dataType: "json"
-		})
-		.done(function(data){
-			self.allBlogs = data;
+		this.sb.subscribe( 'onBlogLinkSelected', function(id){
+			self.Panel.setBlogId(id);
+			choona.util.log('Event Received - onBlogLinkSelected => ' + id);
 		});
-
+	},
+	end: function(){
+		alert("Display Panel is ended. end() function of module is running");
 	}
 };
+

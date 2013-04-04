@@ -4,18 +4,15 @@ myApp.application =  {
 		<div class="navigator" id="<%= id_navigator %>"></div>\
 		<div class="blogDisplayPanel" id="<%= id_blogDisplayContainer %>"></div>',
 	start : function() {
-		this.localEventBus = this.sb.getNewEventBus();
 	
 		this.moduleMap = {
 			blogDisplayContainer : {
 				id : "blogDisplayContainer",
-				module : myApp.blogDisplayPanel,
-				eventBus: this.localEventBus
+				module : myApp.blogDisplayPanel
 			},
 			navigator : {
 				id : "navigator",
-				module : myApp.navigator,
-				eventBus: this.localEventBus
+				module : myApp.navigator
 			}
 		};
 

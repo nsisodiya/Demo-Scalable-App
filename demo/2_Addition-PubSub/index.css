@@ -1,0 +1,17 @@
+
+.box {
+    border: 1px solid red;
+    height: 200px;
+    width: 200px;
+    padding: 20px;
+    float:left;
+}
+
+input {
+	width: 50%;
+}
+
+#result {
+    color: red;
+    font-size: 30px;
+}

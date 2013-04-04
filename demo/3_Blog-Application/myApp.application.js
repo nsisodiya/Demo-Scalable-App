@@ -8,19 +8,19 @@ myApp.application =  {
 	start : function() {
 		this.moduleMap = {
 			blogDisplayContainer : {
-				id : this.id + "_blogDisplayContainer",
+				id : "blogDisplayContainer",
 				module : myApp.blogDisplayPanel
 			},
 			header : {
-				id : this.id + "_header",
+				id : "header",
 				module : myApp.header
 			},
 			navigator : {
-				id : this.id + "_navigator",
+				id : "navigator",
 				module : myApp.navigator
 			},
 			footer : {
-				id : this.id + "_footer",
+				id : "footer",
 				module : myApp.footer
 			}
 		};
@@ -59,7 +59,10 @@ myApp.application =  {
 		}));
 	},
 	startModule: function(id){
-		this.sb.startModule(this.moduleMap[id].id, this.moduleMap[id].module);
+		this.sb.startModule({
+			id:this.moduleMap[id].id, 
+			module: this.moduleMap[id].module
+		});
 	},
 	endModule: function(id){
 		this.sb.endModule(this.moduleMap[id].id);
@@ -67,7 +70,7 @@ myApp.application =  {
 	startAllModules: function(){
 		var self = this;
 		$.each(this.moduleMap,function(i,v){
-			self.sb.startModule(v.id, v.module);
+			self.sb.startModule(v);
 		});
 	}
 };
