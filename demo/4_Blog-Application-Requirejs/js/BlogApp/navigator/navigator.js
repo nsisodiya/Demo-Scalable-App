@@ -13,7 +13,7 @@ define(function(){
 		callServer: function(){
 			var self = this;
 			$.ajax({
-				url:"../../server/links",
+				url:"../../server/blogs",
 				dataType: "json"
 			})
 			.done(function(data){
@@ -27,7 +27,7 @@ define(function(){
 			var htmlstr = [];
 			htmlstr.push('<ul>');
 			$.each(data, function(i,link){
-				htmlstr.push('<li><span class="spanLink '+ self.id +'_links" data-blogid="'+  link.id +'">'+ link.title +'<span></li>');	
+				htmlstr.push('<li><span class="spanLink links" data-blogid="'+  i +'">'+ link.title +'<span></li>');	
 			});
 			htmlstr.push('</ul>');
 			$(this.$).append(htmlstr.join(''));					
@@ -36,7 +36,7 @@ define(function(){
 
 		attachClickHandlers: function(){
 			var self = this;
-			$(this.$).find("." + self.id + "_links").click(function(){
+			$(this.$).find(".links").click(function(){
 				//Transmit this Id to Other Module
 				self.sb.publish("onBlogLinkSelected", $(this).data("blogid"));
 			});

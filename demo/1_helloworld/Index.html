@@ -9,15 +9,21 @@
 </head>
 <body>
 	<div id="applicationContainer"></div>
-	<script type="text/javascript" src="./../../external-libs/jquery-1.7.1.js"></script>
-	<script type="text/javascript" src="./../../external-libs/amplify.min.js"></script>
-	<script type="text/javascript" src="./../../choona.js/choona.js"></script>	
 
+	<script type="text/javascript" src="./../../external-libs/underscore-min.js"></script>
+	<script type="text/javascript" src="./../../external-libs/backbone-min.js"></script>
+	<script type="text/javascript" src="./../../external-libs/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="./../../choona.js/choona.js"></script>
+	
 	<script type="text/javascript" src="./myApp.js"></script>
 
 	<script type="text/javascript">
-  		var application = new choona.loadApplication("applicationContainer", myApp.application);
-			application.start();
+	
+  		choona.startApp({
+ 			id:"applicationContainer", 
+ 			module: myApp.application
+ 		});
+		
 	</script> 
 </body>
 </html>

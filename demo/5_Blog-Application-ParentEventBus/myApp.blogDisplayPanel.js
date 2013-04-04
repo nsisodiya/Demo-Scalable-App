@@ -2,9 +2,9 @@ myApp.blogDisplayPanel = {
 
 	start: function(){
 		this.initHTML();
+
 	},
 	end: function(){
-		alert("Display Panel is ended. end() function of module is running");
 	},
 
 	initHTML: function(){
@@ -23,13 +23,6 @@ myApp.blogDisplayPanel = {
 		});
 		
 		$(this.$).append($('<div id="buttonPanel"></div>').append( subscribeUnsubButton, this.blogEle));
-		
-		
-//		$(this.$).append("<div id='fake'></div>");
-//		this.sb.startModule({
-//			id: "fake",
-//			module: myApp.navigator
-//		});
 		
 		this.subscribeEvents();
 		this.callServer();

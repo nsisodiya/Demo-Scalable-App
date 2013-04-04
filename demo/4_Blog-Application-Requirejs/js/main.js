@@ -1,8 +1,12 @@
+choona.util.debug =  true;
+
 require(['./BlogApp/App'], function(App){
-     
-	var application = new choona.loadApplication("applicationContainer", App);
-	application.start();
- 
+    
+	application = choona.startApp({
+		id:"applicationContainer", 
+		module: App
+ 	});
+
 });
 
 

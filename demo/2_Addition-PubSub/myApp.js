@@ -4,16 +4,23 @@ myApp.application = {
 	start:  function(){
 		$(this.$).append('\
 			<div>\
-				<div id="inputbox"/>\
-				<div id="resultbox"/>\
+				<div class="box" id="inputbox"/>\
+				<div class="box" id="resultbox"/>\
 			</div>\
 		');
 		
-		this.inputbox = this.sb.startModule('inputbox',myApp.inputbox);
-		this.resultbox = this.sb.startModule('resultbox',myApp.resultbox);
+		this.sb.startModule({
+			id:'inputbox',
+			module: myApp.inputbox
+		});
+		
+		this.sb.startModule({
+			id:'resultbox',
+			module: myApp.resultbox
+		});
 		
 	},
 	end:  function(){
 	
 	}
-}
+};

@@ -1,0 +1,62 @@
+.header, .footer{
+	background-color: #EBEBEB;
+	border: 1px solid #EE6767;
+	left: 5%;
+	position: relative;
+	width: 93%;
+	float:left;
+	height:60px;
+}
+
+.applicationBox  {
+	border: 2px solid #3D4ACC;
+	height: auto;
+	width: 45%;
+	padding-top: 21px;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+
+.headerbox {
+	background-color: #EBEBEB;
+	border: 2px solid black;
+	float: left;
+	left: 20%;
+	padding: 10px;
+	position: relative;
+	width: 60%;
+	margin-bottom:20px;
+}
+
+.navigator {
+	background-color: #EBEBEB;
+	border: 1px solid #EE6767;
+	left: 5%;
+	position: relative;
+	width: 36%;
+	float:left;
+	height:300px;
+	padding:8px;
+	clear: both;
+}
+
+.blogDisplayPanel {
+	background-color: #EBEBEB;
+	border: 1px solid #EE6767;
+	left: 5%;
+	position: relative;
+	width: 51%;
+	float:left;
+	height:300px;
+	padding:10px;
+}
+
+.spanLink{color:#0075CE;cursor:pointer;} .spanLink:hover{ text-decoration:underline;}.spanLinkDisabled{color:#ccc;text-decoration:none;cursor:auto;}
+

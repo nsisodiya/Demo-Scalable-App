@@ -3,7 +3,9 @@ myApp.resultbox = {
 	start: function(){
 		var self = this;
 		$(this.$).append('\
-			<div id="resultbox" class="resultbox">\
+			<p><b>Module 2</b></p>\
+			<p>This module will receive two values using PubSub</p>\
+			<div id="result">\
 			</div>\
 		');
 		
@@ -11,7 +13,7 @@ myApp.resultbox = {
 			function(config){
 			//
 			var result = parseInt(config.val1) + parseInt(config.val2);
-			$(self.$).find("#resultbox").html(result);
+			$(self.$).find("#result").html(result);
 			}
 		);
 	},

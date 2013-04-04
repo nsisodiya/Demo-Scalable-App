@@ -5,17 +5,22 @@
     <meta charset="utf-8">
     <meta name="description" content="Demo of Scalable Arch using Choona.js">
     <link rel="STYLESHEET" href="./index.css" type="text/css">
-	
 </head>
-<body>
-	<div id="applicationContainer"></div>
 
+<body>
+	<div class="headerbox"><p>In This Example, I have loaded same Application on Two different container.</p>
+	<p>both use same submodule Ids, Same event name, and both App are work independently without affecting other.</p>
+		<p>both module use separate EventBus. So triggering the same event will affect each other.</p>
+		<p>See <a href="./Index-badCode.html">this example</a>, without custom eventBus and how signal from one App/module affect other App/module</p> 
+	</div>
+	<div id="applicationContainer" class="applicationBox floatLeft"></div>
+	<div id="applicationContainer1" class="applicationBox floatRight"></div>
+	
 	<script type="text/javascript" src="./../../external-libs/underscore-min.js"></script>
 	<script type="text/javascript" src="./../../external-libs/backbone-min.js"></script>
 	<script type="text/javascript" src="./../../external-libs/jquery-1.7.1.js"></script>
 	<script type="text/javascript" src="./../../choona.js/choona.js"></script>	
-	
-	
+
 	<script type="text/javascript" src="./myApp.js"></script>
 	<script type="text/javascript" src="./myApp.application.js"></script>
 	<script type="text/javascript" src="./myApp.header.js"></script>

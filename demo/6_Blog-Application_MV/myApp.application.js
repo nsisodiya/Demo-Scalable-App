@@ -9,7 +9,7 @@ myApp.application =  {
 		this.moduleMap = {
 			blogDisplayContainer : {
 				id : "blogDisplayContainer",
-				module : myApp.blogDisplayPanel
+				module : myApp.blogDisplayPanelView
 			},
 			header : {
 				id : "header",
@@ -70,7 +70,11 @@ myApp.application =  {
 	startAllModules: function(){
 		var self = this;
 		$.each(this.moduleMap,function(i,v){
-			self.sb.startModule(v);
+			try{
+				self.sb.startModule(v);
+			}catch(ex){
+				choona.util.log(ex);
+			}
 		});
 	}
 };
