@@ -119,20 +119,12 @@ principles. This dema application work a starting point to develop such applicat
 
 <a href="#hello-world-module" class="anchor" name="hello-world-module"><span class="mini-icon mini-icon-link"></span></a>Hello World Module</h3>
 
-<p>** inside Module - this.$ is basically a DOM object === document.getElementById("applicationContainer");
-** $(this.$) is jQuery DOM object. $(this.$) === $("#applicationContainer");</p>
-
-<p>** The above module can be written as </p>
-
-<iframe width="100%" height="400" src="http://jsfiddle.net/nsisodiya/aMLVZ/embedded/js,html,result,resources/presentation/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-
 
 <h3>
 <a href="#flow-of-execution" class="anchor" name="flow-of-execution"><span class="mini-icon mini-icon-link"></span></a>Flow of execution</h3>
 
 <ul>
-<li>you create a module using choona.loadApplication by passing an ID and Module Object. Module Object has start, end function. start function inside module will be executed automatically.</li>
+<li>you create a application module using choona.startApp by passing an ID and Module Object. Module Object has start, end function. start function inside module will be executed automatically.</li>
 </ul><h3>
 <a href="#variable-available-inside-a-module" class="anchor" name="variable-available-inside-a-module"><span class="mini-icon mini-icon-link"></span></a>Variable available inside a module</h3>
 
@@ -142,17 +134,20 @@ principles. This dema application work a starting point to develop such applicat
 *   this.config =&gt; Configuration 
 *   this.sb =&gt; instance of sandbox associated with module. It provide useful API
 </code></pre>
+<h3>
+<a class="anchor"><span class="mini-icon mini-icon-link"></span></a>Code</h3>
+
+<iframe width="100%" height="400" src="http://jsfiddle.net/nsisodiya/aMLVZ/embedded/js,html,result,resources/presentation/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <h2><a href="#sanbox-api" class="anchor" name="sanbox-api"><span class="mini-icon mini-icon-link"></span></a>Sanbox API</h2>
-
-<ul>
-<li><p>Module is provided by instance of sanbox. sandbox element provide API.</p></li>
-<li><p>this.sb.publish  ==&gt; Send Signals</p></li>
-<li><p>this.sb.subscribe  ==&gt; Recieve Signals</p></li>
-<li><p>this.sb.unsubscribe  ==&gt; Stop recieving Signals</p></li>
-<li><p>this.sb.startModule  ==&gt; Load a child module inside current module</p></li>
-<li><p>this.sb.startModule  ==&gt; End a child module inside current module</p></li>
-</ul><p>You need not to unsubscribe the Signals. these will be unsubscribed automatically when a module ends.</p>
+<p>Module is provided by instance of sanbox. sandbox element provide API. You need not to unsubscribe the Signals. these will be unsubscribed automatically when a module ends.</p>
+<pre><code>
+* this.sb.publish  ==&gt; Send Signals
+* this.sb.subscribe  ==&gt; Recieve Signals
+* this.sb.unsubscribe  ==&gt; Stop recieving Signals
+* this.sb.startModule  ==&gt; Load a child module inside current module
+* this.sb.endModule  ==&gt; End a child module inside current module
+</code></pre>
 
 <h2><a href="#example-of-module-to-module-communication" class="anchor" name="example-of-module-to-module-communication"><span class="mini-icon mini-icon-link"></span></a>Example of Module to Module Communication</h2>
 
