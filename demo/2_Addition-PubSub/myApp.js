@@ -1,13 +1,9 @@
 var myApp = {};
 
 myApp.application = {
+	template: '<div class="box" id="inputbox"></div>' +
+			'<div class="box" id="resultbox"></div>',
 	start:  function(){
-		$(this.$).append('\
-			<div>\
-				<div class="box" id="inputbox"/>\
-				<div class="box" id="resultbox"/>\
-			</div>\
-		');
 		
 		this.sb.startModule({
 			id:'inputbox',
