@@ -1,15 +1,5 @@
 myApp.navigator = {
 	start: function(){
-		this.initHTML();
-
-	},
-	end: function(){},
-
-	initHTML: function(){
-	
-		this.callServer();
-	},
-	callServer: function(){
 		var self = this;
 		$.ajax({
 			url:"../../server/blogs",
@@ -22,24 +12,14 @@ myApp.navigator = {
 	},
 	parseResponse: function(data){
 		var self = this;
-	
-		var htmlstr = [];
-		htmlstr.push('<ul>');
+		var html = $('<ul>');
 		$.each(data, function(i,link){
-			htmlstr.push('<li><span class="spanLink links" data-blogid="'+  i +'">'+ link.title +'<span></li>');	
+			var li = $('<li><span class="spanLink">'+ link.title +'<span></li>');
+			li.click(function(){
+				self.sb.publish("onBlogLinkSelected", i );
+			});
+			html.append(li);	
 		});
-		htmlstr.push('</ul>');
-		$(this.$).append(htmlstr.join(''));					
-		this.attachClickHandlers();
-	},
-
-	attachClickHandlers: function(){
-		var self = this;
-		$(this.$).find(".links").click(function(){
-			//Transmit this Id to Other Module
-			self.sb.publish("onBlogLinkSelected", $(this).data("blogid"));
-		});
+		$(this.$).append(html);					
 	}
-
 };
-

@@ -1,23 +1,18 @@
 myApp.application =  {
 	
-	template: '<div class="header"><input type="button" id="navKillButton" value="End Navigator Module"/><input type="button" id="panelKillButton" value="End Display Panel Module"/></div>\
-		<div class="header" id="<%= id_header %>"></div>\
-		<div class="navigator" id="<%= id_navigator %>"></div>\
-		<div class="blogDisplayPanel" id="<%= id_blogDisplayContainer %>"></div>\
-		<div class="footer" id="<%= id_footer %>"></div>',
+	html: '<div class="header"><input type="button" id="panelKillButton" value="End Display Panel Module"/></div>\
+		<div class="header" id="<%= header.id %>"></div>\
+		<div class="blogDisplayPanel" id="<%= blogDisplayContainer.id %>"></div>\
+		<div class="footer" id="<%= footer.id %>"></div>',
 	start : function() {
 		this.moduleMap = {
 			blogDisplayContainer : {
 				id : "blogDisplayContainer",
-				module : myApp.blogDisplayPanelView
+				module : myApp.blogDisplayPanel.Manager
 			},
 			header : {
 				id : "header",
 				module : myApp.header
-			},
-			navigator : {
-				id : "navigator",
-				module : myApp.navigator
 			},
 			footer : {
 				id : "footer",
@@ -51,12 +46,7 @@ myApp.application =  {
 		});
 	},
 	initHTML : function() {
-		$(this.$).append(_.template(this.template, {
-			id_header : this.moduleMap.header.id,
-			id_navigator : this.moduleMap.navigator.id,
-			id_blogDisplayContainer : this.moduleMap.blogDisplayContainer.id,
-			id_footer : this.moduleMap.footer.id,
-		}));
+		$(this.$).append(_.template(this.html, this.moduleMap));
 	},
 	startModule: function(id){
 		this.sb.startModule({

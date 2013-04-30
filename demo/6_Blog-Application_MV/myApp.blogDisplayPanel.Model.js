@@ -1,16 +1,17 @@
-myApp.blogDisplayPanelModel = Backbone.Model.extend({
+myApp.blogDisplayPanel.Model = Backbone.Model.extend({
 	urlRoot:"/server/blogs",
     defaults: {
         currentId: null,
         text: undefined,
+        tags: undefined,
     },
     initialize: function(){
     	this.on("change:currentId", function(model, id){
     		var data = model.getDataForId(id);
-    		//if(!(data === undefined)){
-    			model.set({text:data.text});
-    			model.trigger("PanelDataChanged", data);
-    		//}
+   			if(!(data == undefined)){
+	    		model.set({text:data.text});
+	    		model.set({tags:data.tags});
+   			}
         });
     },
     loadDataFromServer: function(){
@@ -18,6 +19,7 @@ myApp.blogDisplayPanelModel = Backbone.Model.extend({
     	this.fetch({
     		success: function (model, data) {
     			self.allBlogs = data;
+    			model.trigger("AllBlogsDataReceived", data);
 	        }
 	    });
     	

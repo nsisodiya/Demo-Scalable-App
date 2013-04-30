@@ -1,14 +1,13 @@
 var myApp = {};
 
 myApp.application = {
-	start:  function(){
-		$(this.$).append('\
-			<div>\
+	template: '<div>\
 				<h1>This is Hello World Example</h1>\
-			</div>\
-		');
+			</div>',
+	start:  function(){
+		console.log("module loaded");
 	},
 	end:  function(){
-	
+		console.log("module un-loaded");
 	}
 }

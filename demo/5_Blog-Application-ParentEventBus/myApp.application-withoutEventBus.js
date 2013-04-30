@@ -1,8 +1,8 @@
 myApp.application =  {
 	
-	template: '<div class="header"><input type="button" id="navKillButton" value="End Navigator Module"/><input type="button" id="panelKillButton" value="End Display Panel Module"/></div>\
-		<div class="navigator" id="<%= id_navigator %>"></div>\
-		<div class="blogDisplayPanel" id="<%= id_blogDisplayContainer %>"></div>',
+	html: '<div class="header"><input type="button" id="navKillButton" value="End Navigator Module"/><input type="button" id="panelKillButton" value="End Display Panel Module"/></div>\
+		<div class="navigator" id="<%= navigator.id %>"></div>\
+		<div class="blogDisplayPanel" id="<%= blogDisplayContainer.id %>"></div>',
 	start : function() {
 	
 		this.moduleMap = {
@@ -42,10 +42,7 @@ myApp.application =  {
 		});
 	},
 	initHTML : function() {
-		$(this.$).append(_.template(this.template, {
-			id_navigator : this.moduleMap.navigator.id,
-			id_blogDisplayContainer : this.moduleMap.blogDisplayContainer.id
-		}));
+		$(this.$).append(_.template(this.html, this.moduleMap));
 	},
 	startModule: function(id){
 		this.sb.startModule(this.moduleMap[id]);
