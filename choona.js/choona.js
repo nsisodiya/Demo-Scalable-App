@@ -1,4 +1,4 @@
-/*   choona.js 1.2.1 
+/*   choona.js 1.3
      (c) 2011-2013 Narendra Sisodiya, narendra@narendrasisodiya.com
      
      choona.js is distributed under the MIT license.
@@ -10,7 +10,12 @@
      http://nsisodiya.github.com/Demo-Scalable-App/
 
      Change Log
-	 1.2.1		Added support for template property.
+     1.3		Removed Backbone.js, As Now this Library support EventBus,
+     			Added Code for EventBus.
+			Added Supprot for Inheritance between modules by
+			Adding choona.extendModule function
+
+     1.2.1		Added support for template property.
      			
      1.2 		Added Concept of EventBus,
      			Added Local Event Handling using Backbone.js
@@ -22,12 +27,50 @@
     			
      			
      1.0.1		Added document.querySelector
-     
-     
-     @depends-on
-     	* underscore.js
-     	* backbone.js
 */
+
+var EventBus = function () {
+    this.NewsPaperList = {};
+    this.OrderList = [];
+};
+
+EventBus.prototype = {
+
+    subscribe: function (newsPaper, address) {
+        if ((typeof newsPaper !== "string") || (typeof address !== "function")) {
+            return -1;
+        }
+        var AList = this.NewsPaperList[newsPaper];
+        if (typeof AList !== "object") {
+            AList = this.NewsPaperList[newsPaper] = [];
+        }
+        
+        var customer = AList.push(address) - 1 ;
+
+        return this.OrderList.push({
+            newsPaper: newsPaper,
+            customer: customer
+        }) - 1;
+    },
+    unsubscribe: function (orderId) {
+        var O = this.OrderList[orderId];
+        if (O !== undefined) {
+            delete this.NewsPaperList[O.newsPaper][O.customer];
+            delete O;
+        }
+    },
+    publish: function (newsPaper, content) {
+        var AddressList = this.NewsPaperList[newsPaper];
+        if (typeof AddressList !== "undefined") {
+            var l = AddressList.length;
+            for (var i = 0; i < l; i++) {
+                if (typeof AddressList[i] === "function") {
+                    AddressList[i].call(this, content);
+                }
+            }
+        }
+    }
+};
 
 var choona = (function(){
 	var util = {
@@ -40,7 +83,7 @@ var choona = (function(){
 		}
 	};
 	
-	var GlobalEventBus = _.extend({}, Backbone.Events);
+	var GlobalEventBus = new EventBus();
 	
 	var Sandbox = function(id){
 		this.id = id;
@@ -85,26 +128,24 @@ var choona = (function(){
 	
 	Sandbox.prototype = {
 		subscribe : function(topic, callback){//publish
-			this.topicList[topic] = this.eventBus.on(topic, callback);
+			this.topicList[topic] = this.eventBus.subscribe(topic, callback);
 			util.log('subscribed topic -> ' + topic);
 		},
 		getNewEventBus : function(){
-			return _.extend({}, Backbone.Events);
+			return new EventBus();
 		},
 		unsubscribe : function(topic){
-			//amplify.unsubscribe(topic, this.topicList[topic]);
-			this.eventBus.off(topic);
+			this.eventBus.unsubscribe(this.topicList[topic]);
 			delete this.topicList[topic];
 			util.log('cleared topic -> ' + topic);
 		},
 		publish: function(topic, val){//public
 			util.log('published -> ' +  topic  + ' = ' + val);
-			//amplify.publish(topic, val);
-			this.eventBus.trigger(topic, val);
+			this.eventBus.publish(topic, val);
 			
 		},
 		startModule: function(data){//public
-			if(typeof data.id != "string" || data.id == ""){
+			if(typeof data.id !== "string" || data.id === ""){
 				throw new Error("Id provided is not String or it is a blank sting");
 			}
 			if(this.moduleList[data.id] === undefined){
@@ -137,7 +178,7 @@ var choona = (function(){
 			parentEventBus = data.parentEventBus,
 			parentNode = data.parentNode;
 		
-		if( protoObj_Module === undefined && !(typeof protoObj_Module === typeof {})){
+		if( protoObj_Module === undefined && (typeof protoObj_Module === "object")){
 			throw new Error("data.module is undefined for data.id = " + data.id);
 			return;
 		}
@@ -202,9 +243,16 @@ var choona = (function(){
 		return new AppCore(data);
 	};
 	
-	
+	var extendModule = function (base, derived) {
+		var X = Object.create(base); //  Now X.__proto__ === base
+		for (var i in derived) {
+			X[i] = derived[i];
+		};
+		return X;
+	};
 	return {
 		startApp: startApp,
-		util: util
+		util: util,
+		extendModule: extendModule
 	};
 })();
