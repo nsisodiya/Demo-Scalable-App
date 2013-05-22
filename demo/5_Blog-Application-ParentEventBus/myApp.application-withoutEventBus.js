@@ -1,8 +1,8 @@
 myApp.application =  {
 	
-	html: '<div class="header"><input type="button" id="navKillButton" value="End Navigator Module"/><input type="button" id="panelKillButton" value="End Display Panel Module"/></div>\
-		<div class="navigator" id="<%= navigator.id %>"></div>\
-		<div class="blogDisplayPanel" id="<%= blogDisplayContainer.id %>"></div>',
+	template: '<div class="header"><input type="button" id="navKillButton" value="End Navigator Module"/><input type="button" id="panelKillButton" value="End Display Panel Module"/></div>\
+		<div class="navigator" id="navigator"></div>\
+		<div class="blogDisplayPanel" id="blogDisplayContainer"></div>',
 	start : function() {
 	
 		this.moduleMap = {
@@ -16,7 +16,6 @@ myApp.application =  {
 			}
 		};
 
-		this.initHTML();
 		this.startAllModules();
 		this.attachEventHandlers();
 	},
@@ -40,9 +39,6 @@ myApp.application =  {
 			self.startModule("blogDisplayContainer");
 			this.value = "End Display Panel Module";
 		});
-	},
-	initHTML : function() {
-		$(this.$).append(_.template(this.html, this.moduleMap));
 	},
 	startModule: function(id){
 		this.sb.startModule(this.moduleMap[id]);
